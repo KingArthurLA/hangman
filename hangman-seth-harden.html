@@ -12,10 +12,10 @@
 <body>
 
 <div id="container">
-	WORD: <span id="word-w">_ _ _ _ _<strong><br>
+	WORD: <span id="theWord"></span><br>
 	WINS: <span id="winTotal"></span><br>
 	LOSSES: <span id="lossCount"></span><br>
-	LIVES LEFT: <span id="user-lives"></span><br>
+	LIVES LEFT: <span id="user-lives">8</span><br>
 	LETTERS GUESSED: <span id="lettersGuessed"></span><br>
 
 	<img id="hangman" src="assets/images/hangman1.png">
@@ -32,14 +32,12 @@ var alphabet = getAlphabetArray();
 
 var wins = 0,
 losses = 0,
+correct = 0,
 lives = 8,
 lettersGuessed=[],
 letterBlanks=[],
 randomWord = "";
 
-var score = {
-	lives: 8,
-}
 
 var word = "timeup";
 
@@ -63,7 +61,7 @@ function gameOver() {
 	}
 
 function checkGameOver () {
-	return livesLeft === 0 || letterSpaces.indexOf("_") === -1;
+	return livesLeft === 0 || correct == 6;
 }
 
 
@@ -94,6 +92,13 @@ function inititalizGame(){
 
 function getAlphabetArray () {
 	var alphabetArray=[];
+
+	for (var i = "a".charCodeAt(0); i <= "z".charCodeAt(0); i++){
+		alphabetArray.push(String.fromCharCode(i));
+	}
+
+	return alphabetArray;
+
 }
 
 
@@ -102,22 +107,30 @@ document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 if (word.indexOf (userGuess) > -1) {
 
-	
 
 	alert("You guessed a correct letter");
-	document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
-	document.getElementById('word-w').append = (userGuess);
+
+	document.getElementById('theWord').innerHTML += userGuess;
+	
+	correct = correct + 1;
+		if (correct == 6) {
+    	alert("YOU WON");
+    	inititalizGame();
+    }
+
+
 } else {
-	alert("You guessed a wrong letter");
-	score.lives = score.lives - 1;
-		if (score.lives == 0) {
+		lives = lives - 1;
+		if (lives == 0) {
     	alert("YOU LOSE");
 		} else {
-		alert("WRONG GUESS! YOU NOW HAVE " + score.lives + " LIVES.");
-		document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
+		alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
+		document.getElementById('user-lives').innerHTML = lives;
 		}
 		
 }
+	
+
 
 
 }
