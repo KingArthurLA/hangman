@@ -13,12 +13,13 @@
 
 <div id="container">
 	WORD: <span id="word-w"><strong><br>
-	<br>
-	<br>
+	WINS: <span id="winTotal"></span><br>
+	LOSSES: <span id="lossCount"></span><br>
+	LIVES LEFT: <span id="user-lives"></span><br>
+	LETTERS GUESSED: <span id="lettersGuessed"></span><br>
 
-	<span id="user-lives"><strong>
+	<img id="hangman" src="assets/images/hangman1.png">
 
-<img src="assets/images/hangman1.png">
 </div>
 <script>
 
@@ -26,6 +27,8 @@
 var words =["jump", "campus", "donald", "coding", "easy", "extremely", "dictionary"]
 
 var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+
+var alphabet = getAlphabetArray();
 
 var wins = 0,
 losses = 0,
@@ -44,7 +47,7 @@ var word = "timeup";
 
 
 function gameOver() {
-	if (letterSpaces.indexOf("_") === -1) {
+	if (letterBlanks.indexOf("_") === -1) {
 		wins++;
 		alert("YA YOU WON!");
 	} else {
@@ -72,7 +75,7 @@ function isValidLetter(letter){
 function updateWrongGuess() {
 	 livesLeft--;
 	 document.getElementById("lettersGuessed").innerHTML = lettersGuessed.join(" ");
-	 document.getElementById("livesLeftTotal").innerHTML = livesLeft;
+	 document.getElementById("user-lives").innerHTML = livesLeft;
 }
 
 
@@ -80,12 +83,17 @@ function updateWrongGuess() {
 
 function inititalizGame(){
 	livesLeft = 8;
-	//randomword = words [math.floor ((math.random()=words.length))]
+	lettersGuessed=[];
+	letterBlanks=[];
+	randomword = words [Math.floor ((Math.random()=words.length))];
+
+	for (var i=0; i < randomWord.length; i++){
+		letterBlanks.push("_");
+	}
 }
 
 function getAlphabetArray () {
-	var alphabetArray=[]
-
+	var alphabetArray=[];
 }
 
 
@@ -111,8 +119,6 @@ if (word.indexOf (userGuess) > -1) {
 		
 }
 	
-
-
 
 }
 
