@@ -8,10 +8,20 @@
 </head>
 <body>
 
-Lives: <span id="user-lives"><strong><br>
 
+WORD: <span id="word-w"><strong><br>
+<br>
+<br>
 
+<span id="user-lives"><strong>
 <script>
+
+
+var score = {
+
+	lives: 8,
+
+}
 
 var word = "botcamp";
 	
@@ -21,6 +31,10 @@ document.onkeyup = function(event) {
 if (word.indexOf (userGuess) > -1) {
 	
 	alert("You guessed a correct letter");
+
+	document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
+
+	document.getElementById('word-w').append = (userGuess);
 
 } else {
 
@@ -36,16 +50,19 @@ if (word.indexOf (userGuess) > -1) {
 
 		alert("WRONG GUESS! YOU NOW HAVE " + score.lives + " LIVES.");
 
+		document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
+
 		}
 
-		var userLives = document.getElementById("user-lives");
-		userLives.textContent = (lives - 1);
+		
+
+
 
 
 
 }
 
-
+	
 
 }
 
