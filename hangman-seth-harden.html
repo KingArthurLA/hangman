@@ -5,6 +5,9 @@
   <meta charset="UTF-8">
   <title>Seth's Hangman</title>
 
+
+<link href="assets/css/style.css" rel="stylesheet">
+
 </head>
 <body>
 
@@ -15,79 +18,84 @@
 
 	<span id="user-lives"><strong>
 
-
+<img src="assets/images/hangman1.png">
 </div>
 <script>
 
 
-///variables
-//functions
-// detect letter
+var words =["jump", "campus", "donald", "coding", "easy", "extremely", "dictionary"]
 
-is game over
-is valid letter
-is bad letter
-is already guessed
+var alphabetArray = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-//this powers game
-document.onkeyup = function (event){
-they hit the key is the game over or not?
-}
-
-
-//userGuess
-//isValid Letter = 
-	function isValidLetter(letter){
-	return alphabet.indexOF(letter) > -1;
-	}
-//
-
-if (isValidLetter(userGuess)){
-
-//then continue
-
-if letterGuessed.indexOf(userGuess) === -1{
-
-}
-
-
-if letterGuessed.push()
-
-
-}
-
-
-var words =[]
-alphabetArray []
-hangman image[hangman1.png, hangman2.png etc]
-
-
-var wins,
-losses,
-guesses left,
-letters guessed=[],
-lettersblanks
-
-
-function inititalizGame(){
-	guesses left =8;
-	lettersblanks
-
-	randomword   = words [math.floor ((math.random()=words.length))]
-}
-
-
-
+var wins = 0,
+losses = 0,
+lives = 8,
+lettersGuessed=[],
+letterBlanks=[],
+randomWord = "";
 
 var score = {
 	lives: 8,
 }
-var word = "botcamp";
+
+var word = "timeup";
+
+
+
+
+function gameOver() {
+	if (letterSpaces.indexOf("_") === -1) {
+		wins++;
+		alert("YA YOU WON!");
+	} else {
+		losses++;
+		alert("SO SAD... YOU LOST")
+	}
+	
+	document.getElementById("winCount").innerHTML = wins;
+	document.getElementById("lossCount").innerHTML = losses;
+
+	//Let's play again!
+	restartTheGame();
+	}
+
+function checkGameOver () {
+	return livesLeft === 0 || letterSpaces.indexOf("_") === -1;
+}
+
+
+function isValidLetter(letter){
+	return alphabet.indexOF(letter) > -1;
+	}
+
+
+function updateWrongGuess() {
+	 livesLeft--;
+	 document.getElementById("lettersGuessed").innerHTML = lettersGuessed.join(" ");
+	 document.getElementById("livesLeftTotal").innerHTML = livesLeft;
+}
+
+
+
+
+function inititalizGame(){
+	livesLeft = 8;
+	//randomword = words [math.floor ((math.random()=words.length))]
+}
+
+function getAlphabetArray () {
+	var alphabetArray=[]
+
+}
+
+
 	
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
 if (word.indexOf (userGuess) > -1) {
+
 	
+
 	alert("You guessed a correct letter");
 	document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
 	document.getElementById('word-w').append = (userGuess);
@@ -105,35 +113,9 @@ if (word.indexOf (userGuess) > -1) {
 	
 
 
-function getAlphabetArray () {
-	var alphabetArray=[]
 
 }
 
-
-}
-/*
-Grab whatever key I press
-document.onkeyup = function(event) {
-	var letter = String.fromCharCode(event.keyCode).toLowerCase();
-	if (letter == "h") {
-		car.honk();
-		writeStats();
-	}
-	if (letter == "d") {
-		car.driveToWork();
-		writeStats();
-	}
-	if (letter == "w") {
-		car.driveAroundWorld();
-		writeStats();
-	}
-	if (letter == "t") {
-		car.getTuneUp();
-		writeStats();
-	}
-}
-*/
 </script>
 
 </body>
