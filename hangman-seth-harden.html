@@ -8,67 +8,110 @@
 </head>
 <body>
 
+<div id="container">
+	WORD: <span id="word-w"><strong><br>
+	<br>
+	<br>
 
-WORD: <span id="word-w"><strong><br>
-<br>
-<br>
+	<span id="user-lives"><strong>
 
-<span id="user-lives"><strong>
+
+</div>
 <script>
 
 
-var score = {
+///variables
+//functions
+// detect letter
 
-	lives: 8,
+is game over
+is valid letter
+is bad letter
+is already guessed
+
+//this powers game
+document.onkeyup = function (event){
+they hit the key is the game over or not?
+}
+
+
+//userGuess
+//isValid Letter = 
+	function isValidLetter(letter){
+	return alphabet.indexOF(letter) > -1;
+	}
+//
+
+if (isValidLetter(userGuess)){
+
+//then continue
+
+if letterGuessed.indexOf(userGuess) === -1{
 
 }
 
+
+if letterGuessed.push()
+
+
+}
+
+
+var words =[]
+alphabetArray []
+hangman image[hangman1.png, hangman2.png etc]
+
+
+var wins,
+losses,
+guesses left,
+letters guessed=[],
+lettersblanks
+
+
+function inititalizGame(){
+	guesses left =8;
+	lettersblanks
+
+	randomword   = words [math.floor ((math.random()=words.length))]
+}
+
+
+
+
+var score = {
+	lives: 8,
+}
 var word = "botcamp";
 	
 document.onkeyup = function(event) {
 	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-
 if (word.indexOf (userGuess) > -1) {
 	
 	alert("You guessed a correct letter");
-
 	document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
-
 	document.getElementById('word-w').append = (userGuess);
-
 } else {
-
 	alert("You guessed a wrong letter");
-
 	score.lives = score.lives - 1;
-
 		if (score.lives == 0) {
-
     	alert("YOU LOSE");
-
 		} else {
-
 		alert("WRONG GUESS! YOU NOW HAVE " + score.lives + " LIVES.");
-
 		document.getElementById('user-lives').innerHTML = "YOUR LIVES:" + score.lives;
-
 		}
-
 		
-
-
-
-
-
 }
-
 	
 
+
+function getAlphabetArray () {
+	var alphabetArray=[]
+
 }
 
 
-
-
+}
 /*
 Grab whatever key I press
 document.onkeyup = function(event) {
@@ -91,7 +134,6 @@ document.onkeyup = function(event) {
 	}
 }
 */
-
 </script>
 
 </body>
