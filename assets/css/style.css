@@ -12,4 +12,6 @@
 #hangman{
 	position: absolute;
 	bottom: 0px;
+	height:50%;
+	margin: 0 auto;
 }
