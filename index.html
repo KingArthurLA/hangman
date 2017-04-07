@@ -18,7 +18,7 @@
 	LIVES LEFT: <span id="user-lives">8</span><br>
 	LETTERS GUESSED: <span id="lettersGuessed"></span><br>
 
-	<img id="hangman" src="assets/images/hangman1.png">
+	<img id="hangman" alt="hangman-image" src="assets/images/hangman1.png">
 
 </div>
 <script>
@@ -111,6 +111,7 @@ if (word.indexOf (userGuess) > -1) {
 	alert("You guessed a correct letter");
 
 	document.getElementById('theWord').innerHTML += userGuess;
+	document.getElementById('lettersGuessed').innerHTML += userGuess;
 	
 	correct = correct + 1;
 		if (correct == 6) {
@@ -125,6 +126,7 @@ if (word.indexOf (userGuess) > -1) {
     	alert("YOU LOSE");
 		} else {
 		alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
+		document.getElementById('lettersGuessed').innerHTML += userGuess;
 		document.getElementById('user-lives').innerHTML = lives;
 		}
 		
