@@ -13,6 +13,7 @@
 
 <div id="container">
 	WORD: <span id="theWord"></span><br>
+	LETTSE: <span id="letterBlanks"></span><br>
 	WINS: <span id="winTotal"></span><br>
 	LOSSES: <span id="lossCount"></span><br>
 	LIVES LEFT: <span id="user-lives">8</span><br>
@@ -38,11 +39,7 @@ lettersGuessed=[],
 letterBlanks=[],
 randomWord = "";
 
-
 var word = "timeup";
-
-
-
 
 function gameOver() {
 	if (letterBlanks.indexOf("_") === -1) {
@@ -76,9 +73,6 @@ function updateWrongGuess() {
 	 document.getElementById("user-lives").innerHTML = livesLeft;
 }
 
-
-
-
 function inititalizGame(){
 	livesLeft = 8;
 	lettersGuessed=[];
@@ -104,28 +98,28 @@ function getAlphabetArray () {
 
 	
 document.onkeyup = function(event) {
-	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
-if (word.indexOf (userGuess) > -1) {
-
-
-	alert("You guessed a correct letter");
-
-	document.getElementById('theWord').innerHTML += userGuess;
-	document.getElementById('lettersGuessed').innerHTML += userGuess;
 	
-	correct = correct + 1;
+	var userGuess = String.fromCharCode(event.keyCode).toLowerCase();
+	
+	if (word.indexOf (userGuess) > -1) {
+
+		alert("You guessed a correct letter");
+
+		document.getElementById('theWord').innerHTML += userGuess;
+		document.getElementById('lettersGuessed').innerHTML += userGuess;
+		correct = correct + 1;
 		if (correct == 6) {
-    	alert("YOU WON");
-    	inititalizGame();
-    }
+    		alert("YOU WON");
+    		inititalizGame();
+    	}
 
 
 } else {
-		lives = lives - 1;
-		if (lives == 0) {
+	lives = lives - 1;
+	if (lives == 0) {
     	alert("YOU LOSE");
-		} else {
-		alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
+	} else {
+	alert("WRONG GUESS! YOU NOW HAVE " + lives + " LIVES.");
 		document.getElementById('lettersGuessed').innerHTML += userGuess;
 		document.getElementById('user-lives').innerHTML = lives;
 		}
